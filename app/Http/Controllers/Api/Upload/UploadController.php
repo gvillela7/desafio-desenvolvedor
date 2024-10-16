@@ -7,7 +7,6 @@ use App\Http\Requests\FileUploadRequest;
 use App\Http\Requests\LogFileRequest;
 use App\Services\ServiceUpload;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class UploadController extends Controller
 {

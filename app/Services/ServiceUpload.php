@@ -23,7 +23,7 @@ class ServiceUpload
         $date = ($request->get('date') !== null) ? HelperDate::convertDate($request->get('date')) : null;
         $file = FileUpload::select('_id', 'name', 'date', 'path', 'size', 'type', 'processed');
         if ($name !== null) {
-            $file->where('name', $name);
+            $file->where('name', 'like', '%'.$name.'%');
         }
         if ($date !== null) {
             $file->whereDate('date', $date);
