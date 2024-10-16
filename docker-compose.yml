@@ -33,29 +33,29 @@ services:
             - oliveira-trust
         <<: *logging
 
-    api:
-        build:
-            args:
-                user: www-data
-                uid: 1000
-            context: ./
-            dockerfile: ./Dockerfile
-        image: api
-        container_name: api
-        ports:
-            - "8000:8000"
-        restart: unless-stopped
-        working_dir: /var/www/html/oltrust
-        environment:
-            PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/www/html/oltrust
-        volumes:
-            - /home/gustavo/projects/desafios/oliveiraTrust:/var/www/html/oltrust
-        depends_on:
-            - redis
-            - mongodb
-        networks:
-            - oliveira-trust
-        <<: *logging
+#    api:
+#        build:
+#            args:
+#                user: www-data
+#                uid: 1000
+#            context: ./
+#            dockerfile: ./Dockerfile
+#        image: api
+#        container_name: api
+#        ports:
+#            - "8000:8000"
+#        restart: unless-stopped
+#        working_dir: /var/www/html/oltrust
+#        environment:
+#            PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/var/www/html/oltrust
+#        volumes:
+#            - /home/gustavo/projects/desafios/oliveiraTrust:/var/www/html/oltrust
+#        depends_on:
+#            - redis
+#            - mongodb
+#        networks:
+#            - oliveira-trust
+#        <<: *logging
 
 
 networks:
