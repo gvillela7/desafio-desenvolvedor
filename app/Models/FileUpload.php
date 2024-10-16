@@ -26,6 +26,7 @@ class FileUpload extends Model
         'path',
         'size',
         'type',
+        'extension',
         'processed',
     ];
     protected $casts = [

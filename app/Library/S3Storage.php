@@ -31,6 +31,7 @@ class S3Storage
             'path' => ('https://desafioot.s3.amazonaws.com/' . $s3),
             'size' => $file->getSize(),
             'type' => $file->getMimeType(),
+            'extension' => $file->getClientOriginalExtension(),
             'processed' => false
         ];
     }

@@ -22,13 +22,17 @@ class ServiceUpload
         $name = $request->get('name') ?? null;
         $date = ($request->get('date') !== null) ? HelperDate::convertDate($request->get('date')) : null;
         $file = FileUpload::select('_id', 'name', 'date', 'path', 'size', 'type', 'processed');
-        if ($name !== null) {
-            $file->where('name', 'like', '%'.$name.'%');
-        }
-        if ($date !== null) {
-            $file->whereDate('date', $date);
-        }
-        return ['data' => $file->get(), 'status' => Response::HTTP_OK];
+        return match (true) {
+            $name !== null || $date !== null => [
+                'data' => $file->whereLike('name', '%{$name}%')
+                    ->orwhereDate('date', $date)->get(),
+                'status' => Response::HTTP_OK
+            ],
+            default => [
+                'data' => $file->get(),
+                'status' => Response::HTTP_OK
+            ]
+        };
     }
 
     public function getData(Request $request): ?array
